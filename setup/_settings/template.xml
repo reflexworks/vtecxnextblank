@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed>
+<entry>
+<content></content>
+<link href="/_settings/template" rel="self"></link>
+<rights></rights>
+</entry>
+<entry>
+  <link href="/_settings/template_property" rel="self"/>
+</entry>

@@ -1,0 +1,35 @@
+:root {
+  --max-width: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  margin: 0;
+}
+
+.recaptcha {
+  color: gray;
+  font-size: smaller;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) {
+  .table_row:hover {
+    background: #f8f8f8;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+}

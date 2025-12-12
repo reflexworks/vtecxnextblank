@@ -1,0 +1,2 @@
+# main にいる状態で develop をマージする際、このファイルは常に main を優先
+setup/_settings/properties.xml merge=ours

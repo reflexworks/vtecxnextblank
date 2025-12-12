@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed>
+  <entry>
+    <contributor>
+      <uri>urn:vte.cx:acl:/_group/$admin,CRUD</uri>
+    </contributor>
+    <contributor>
+      <uri>urn:vte.cx:acl:+,RE</uri>
+    </contributor>
+    <link href="/_settings/properties" rel="self"/>
+    <rights>_errorpage.1.login.html=^/_html/.*$
+_errorpage.2.login.html=^/@/.*$
+console.log=true
+console.warn=false
+console.error=true
+_recaptcha.sitekey=6LdUGHgUAAAAAOU28hR61Qceg2WP_Ms3kcuMHmmR
+_entry.number.default=100
+_session.minute=1440
+_rxid.minute=120
+</rights>
+  </entry>
+  <entry>
+    <contributor>
+      <uri>urn:vte.cx:acl:/_group/$admin,CRUD</uri>
+    </contributor>
+    <contributor>
+      <uri>urn:vte.cx:acl:*,RE</uri>
+    </contributor>
+    <content type="text/html">&lt;html&gt;
+&lt;body&gt;
+&lt;pre&gt;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+このメールは、vte.cxから配信されています。
+このメールに心当たりのない方は破棄お願いします。
+このメールにご返信できませんのでご了承ください。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+以下のURLをクリックしてパスワード変更を行ってください。
+
+${VTECXNEXT_URL}/change-password?${PASSRESET_TOKEN}
+
+設定が完了いたしますと、新しいパスワードでサービスがご利用できるようになります。
+
+こちらのリンクはご登録より24時間を過ぎますとクリック時にエラーになります。
+その場合はお手数ではございますが再度お申込みからお願いいたします。
+
+トップページ
+${VTECXNEXT_URL}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+vte.cx
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+    <link href="/_settings/passreset" rel="self"/>
+    <summary>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+このメールは、vte.cxから配信されています。
+このメールに心当たりのない方は破棄お願いします。
+このメールにご返信できませんのでご了承ください。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+以下のURLをクリックしてパスワード変更を行ってください。
+
+${VTECXNEXT_URL}/change-password?${PASSRESET_TOKEN}
+
+設定が完了いたしますと、新しいパスワードでサービスがご利用できるようになります。
+
+こちらのリンクはご登録より24時間を過ぎますとクリック時にエラーになります。
+その場合はお手数ではございますが再度お申込みからお願いいたします。
+
+トップページ
+${VTECXNEXT_URL}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+vte.cx 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</summary>
+    <title>パスワード変更</title>
+    <subtitle>text</subtitle>
+  </entry>
+</feed>

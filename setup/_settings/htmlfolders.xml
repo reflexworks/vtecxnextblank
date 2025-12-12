@@ -1,0 +1,12 @@
+<feed>
+    <entry>
+        <contributor>
+            <uri>urn:vte.cx:acl:/_group/$admin,CRUD</uri>
+        </contributor>
+        <contributor>
+            <!-- /_settingsをログインユーザでサービスのみ（E)に閲覧できるようにするACL設定(+)  -->
+            <uri>urn:vte.cx:acl:+,RE./</uri>
+        </contributor>
+        <link rel="self" href="/_settings" />
+    </entry>
+</feed>
