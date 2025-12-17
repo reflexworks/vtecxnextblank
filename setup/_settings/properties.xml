@@ -17,7 +17,68 @@ _recaptcha.sitekey=6LdUGHgUAAAAAOU28hR61Qceg2WP_Ms3kcuMHmmR
 _entry.number.default=100
 _session.minute=1440
 _rxid.minute=120
+_mail.user=
+_mail.password=
+_mail.from=
+_mail.from.personal=
+_mail.transport.protocol=
+_mail.smtp.host=
+_mail.smtp.port=
+_mail.smtp.auth=
 </rights>
+  </entry>
+  <entry>
+    <contributor>
+      <uri>urn:vte.cx:acl:/_group/$admin,CRUD</uri>
+    </contributor>
+    <contributor>
+      <uri>urn:vte.cx:acl:*,RE</uri>
+    </contributor>
+    <content type="text/html">&lt;html&gt;
+&lt;body&gt;
+&lt;pre&gt;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+このメールは、vte.cx から配信されています。
+このメールに心当たりのない方は破棄お願いします。
+このメールにご返信できませんのでご了承ください。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+この度は、vte.cx にお申込みいただき、ありがとうございました。
+以下のURLをクリックして本登録を完了してください。
+
+${VTECXNEXT_URL}/signup-completion?_RXID=${RXID}
+
+こちらのリンクはご登録より24時間を過ぎますとクリック時にエラーになります。
+その場合はお手数ではございますが再度お申込みからお願いいたします。
+トップページ ${URL}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+vte.cx
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+    <link href="/_settings/adduser" rel="self"/>
+    <summary>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+このメールは、vte.cx から配信されています。
+このメールに心当たりのない方は破棄お願いします。
+このメールにご返信できませんのでご了承ください。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+この度は、vte.cx にお申込みいただき、ありがとうございました。
+以下のURLをクリックして本登録を完了してください。
+
+${VTECXNEXT_URL}/signup-completion?_RXID=${RXID}
+
+こちらのリンクはご登録より24時間を過ぎますとクリック時にエラーになります。
+その場合はお手数ではございますが再度お申込みからお願いいたします。
+トップページ ${URL}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+vte.cx
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</summary>
+    <title>ユーザ登録のお申込み確認</title>
+    <subtitle>text</subtitle>
   </entry>
   <entry>
     <contributor>

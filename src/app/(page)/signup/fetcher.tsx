@@ -1,30 +1,24 @@
-import constant from '@/constants'
 import * as browserutil from '@/utils/browserutil'
+import { getHashpass } from '@vtecx/vtecxauth'
 
 /**
- * パスワードリセットメールの送信
+ * アカウント登録メールの送信
  * @returns API result
  */
-export const changePassword = async (user_name: string, reCaptchaToken: string) => {
+export const addUser = async (user_name: string, password: string, reCaptchaToken: string) => {
   const param = reCaptchaToken ? `g-recaptcha-token=${reCaptchaToken}` : ''
   try {
     const res: VtecxApp.Feed = await browserutil.requestApi(
       'POST',
-      'passreset',
+      'adduser',
       param,
       JSON.stringify({
-        username: user_name
+        username: user_name,
+        pswd: getHashpass(password)
       })
     )
     return res
   } catch (e: any) {
     return browserutil.handleError(e, true)
   }
-}
-
-// propsの型を定義する
-export type Props = {
-  title: string
-  main_path: string
-  login_screen_path?: string
 }

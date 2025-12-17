@@ -1,7 +1,6 @@
 'use client'
 import { Button, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
-import { Props } from './fetcher'
 import React from 'react'
 import constant from '@/constants'
 import { useRouter } from 'next/navigation'
@@ -10,7 +9,7 @@ import { useRouter } from 'next/navigation'
  * パスワード再設定完了画面のページ関数
  * @returns HTML
  */
-const ChangePasswordComplete = ({ title }: Props) => {
+const ChangePasswordComplete = () => {
   const router = useRouter()
   return (
     <React.Fragment>
@@ -19,9 +18,6 @@ const ChangePasswordComplete = ({ title }: Props) => {
           <Grid size={{ xs: 12, md: 5 }} textAlign={'center'}>
             <Typography variant="h5" gutterBottom component={'div'}>
               {constant.app_name}
-            </Typography>
-            <Typography variant="h5" gutterBottom>
-              {title}
             </Typography>
           </Grid>
 
@@ -32,10 +28,10 @@ const ChangePasswordComplete = ({ title }: Props) => {
             </Typography>
             <Button
               onClick={() => {
-                router.push('/')
+                router.push('/login')
               }}
             >
-              トップ画面に移動する
+              ログイン画面に移動する
             </Button>
           </Grid>
         </Grid>

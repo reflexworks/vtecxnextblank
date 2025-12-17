@@ -3,7 +3,7 @@ import { VtecxNext, isVtecxNextError } from '@vtecx/vtecxnext'
 import * as apiutil from '@/utils/apiutil'
 
 /**
- * 内閣府ログイン処理.
+ * ログイン処理.
  * @param req リクエスト
  * @returns ログイン成功の場合、SIDをSet-Cookieする。
  */

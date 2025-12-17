@@ -1,7 +1,13 @@
-import { VtecxNext, StatusMessage, VtecxNextError, isVtecxNextError } from '@vtecx/vtecxnext'
+import {
+  VtecxNext,
+  StatusMessage,
+  VtecxNextError,
+  isVtecxNextError,
+  AdduserInfo
+} from '@vtecx/vtecxnext'
 import { NextRequest } from 'next/server'
 import * as util from './commonutil'
-import { Entry } from '@/typings'
+import { Entry, MessageResponse } from '@/typings'
 import { MAIL_REPLACE_VTECXNEXT_URL } from './apiconst'
 
 /**
@@ -45,6 +51,23 @@ export const logout = async (vtecxnext: VtecxNext): Promise<StatusMessage> => {
     console.log(`[apiutil logout] Error occured. ${e}`)
     throw e
   }
+}
+
+/**
+ * アカウント登録
+ * @param req リクエスト
+ * @param vtecxnext VtecxNext
+ * @param adduserInfos 登録ユーザ情報
+ * @returns レスポンスのステータスとメッセージ
+ */
+export const adduser = async (
+  req: NextRequest,
+  vtecxnext: VtecxNext,
+  adduserInfos: AdduserInfo
+): Promise<MessageResponse> => {
+  // リクエストヘッダからWSSEを取得
+  const reCaptchaToken: string = util.toString(vtecxnext.getParameter('g-recaptcha-token'))
+  return await vtecxnext.adduser(adduserInfos, reCaptchaToken)
 }
 
 /**

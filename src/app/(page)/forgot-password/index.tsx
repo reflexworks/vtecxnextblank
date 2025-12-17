@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Button, FormControl, TextField, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { grey } from '@mui/material/colors'
-import { changePassword, Props } from './fetcher'
+import { changePassword } from './fetcher'
 import useLoader from '@/hooks/useLoader'
 import { useRouter } from 'next/navigation'
 import { handleErrorProps } from '@/utils/browserutil'
@@ -19,7 +19,7 @@ import { email_regex } from '@/utils/checkutil'
  * パスワード再設定用画面のページ関数
  * @returns HTML
  */
-const ForgotPassword = ({ title, main_path, login_screen_path }: Props) => {
+const Main = () => {
   const [email, setEmail] = useState('')
   // ホームページ関数内で定義
   const { loaded, executeRecaptcha } = useReCaptcha()
@@ -41,7 +41,7 @@ const ForgotPassword = ({ title, main_path, login_screen_path }: Props) => {
       )
       if (res) {
         if ('feed' in res) {
-          router.push(main_path)
+          router.push('/forgot-password/complete')
         } else if ('error' in res) {
           res.error.message =
             'メール送信に失敗しました。入力されたメールアドレスが合っているかご確認お願いします。'
@@ -59,9 +59,6 @@ const ForgotPassword = ({ title, main_path, login_screen_path }: Props) => {
           <Grid size={{ xs: 12, md: 5 }} textAlign={'center'}>
             <Typography variant="h5" gutterBottom component={'div'}>
               {constant.app_name}
-            </Typography>
-            <Typography variant="h5" gutterBottom>
-              {title}
             </Typography>
             <Typography variant="h5" gutterBottom>
               {'パスワードの再設定'}
@@ -108,19 +105,15 @@ const ForgotPassword = ({ title, main_path, login_screen_path }: Props) => {
               <a href="https://policies.google.com/terms">Terms of Service</a> apply.
             </Typography>
           </Grid>
-          {Boolean(login_screen_path) && (
-            <Grid size={{ xs: 12, md: 5 }} textAlign={'center'}>
-              {login_screen_path && (
-                <Link href={login_screen_path}>
-                  <Typography variant="caption">ログイン画面に戻る</Typography>
-                </Link>
-              )}
-            </Grid>
-          )}
+          <Grid size={{ xs: 12, md: 5 }} textAlign={'center'}>
+            <Link href={'/login'}>
+              <Typography variant="caption">ログイン画面に戻る</Typography>
+            </Link>
+          </Grid>
         </Grid>
       </div>
     </>
   )
 }
 
-export default ForgotPassword
+export default Main

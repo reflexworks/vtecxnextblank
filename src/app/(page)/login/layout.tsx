@@ -1,6 +1,9 @@
-'use client'
-
 import { Box } from '@mui/material'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'ログイン | vtecx next blank'
+}
 
 const MainLayout = ({ children }: any) => {
   return (
