@@ -6,7 +6,7 @@ import { getAuthToken } from '@vtecx/vtecxauth'
 import { Button, FormControl, TextField, Typography } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { grey } from '@mui/material/colors'
-import { login, Props } from './fetcher'
+import { login } from './fetcher'
 import useLoader from '@/hooks/useLoader'
 import { useRouter } from 'next/navigation'
 import { handleErrorProps } from '@/utils/browserutil'
@@ -19,7 +19,7 @@ import { useReCaptcha } from 'next-recaptcha-v3'
  * ページ関数
  * @returns HTML
  */
-const Login = ({ title, api, main_path, password_change_path }: Props) => {
+const Main = () => {
   const [username, setUsername] = useState('')
   const [pswrd, setPswrd] = useState('')
 
@@ -47,13 +47,11 @@ const Login = ({ title, api, main_path, password_change_path }: Props) => {
       const retStr: string | handleErrorProps | undefined | VtecxApp.Entry = await login(
         wsse,
         reCaptchaToken,
-        api
+        'login'
       )
       if (retStr) {
         if (typeof retStr === 'string') {
-          router.push(main_path)
-        } else if ('user' in retStr) {
-          router.push(`/home`)
+          router.push('/')
         } else if ('error' in retStr) {
           setError(retStr.error)
         }
@@ -74,7 +72,7 @@ const Login = ({ title, api, main_path, password_change_path }: Props) => {
               {constant.app_name}
             </Typography>
             <Typography variant="h5" gutterBottom>
-              {title}
+              ログイン
             </Typography>
           </Grid>
           <Grid size={{ xs: 12, md: 5 }}>
@@ -121,19 +119,20 @@ const Login = ({ title, api, main_path, password_change_path }: Props) => {
               <a href="https://policies.google.com/terms">Terms of Service</a> apply.
             </Typography>
           </Grid>
-          {Boolean(password_change_path) && (
-            <Grid size={{ xs: 12, md: 5 }} textAlign={'center'}>
-              {password_change_path && (
-                <Link href={password_change_path}>
-                  <Typography variant="caption">パスワードをお忘れの方はこちら</Typography>
-                </Link>
-              )}
-            </Grid>
-          )}
+          <Grid size={{ xs: 12, md: 5 }} textAlign={'center'}>
+            <Link href={'/signup'}>
+              <Typography variant="caption">新規登録はこちら</Typography>
+            </Link>
+          </Grid>
+          <Grid size={{ xs: 12, md: 5 }} textAlign={'center'}>
+            <Link href={'/forgot-password'}>
+              <Typography variant="caption">パスワードをお忘れの方はこちら</Typography>
+            </Link>
+          </Grid>
         </Grid>
       </div>
     </>
   )
 }
 
-export default Login
+export default Main

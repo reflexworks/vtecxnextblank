@@ -24,9 +24,3 @@ export const changePassword = async (password: string, passreset_token: string, 
     return browserutil.handleError(e, true)
   }
 }
-
-// propsの型を定義する
-export type Props = {
-  title: string
-  main_path: string
-}

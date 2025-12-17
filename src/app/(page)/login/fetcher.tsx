@@ -24,11 +24,3 @@ export const login = async (wsse: string, reCaptchaToken: string, api: string) =
     return browserutil.handleError(e, true)
   }
 }
-
-// propsの型を定義する
-export type Props = {
-  title: string
-  main_path: string
-  password_change_path?: string
-  api: string
-}
