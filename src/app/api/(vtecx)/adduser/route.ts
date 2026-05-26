@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { AdduserInfo, VtecxNext } from '@vtecx/vtecxnext'
-import { Entry } from 'typings'
+import { Entry } from '@/typings'
 import { URI_SETTINGS_ADDUSER } from '@/utils/apiconst'
 import * as apiutil from '@/utils/apiutil'
 

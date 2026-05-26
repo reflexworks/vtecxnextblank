@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { VtecxNext } from '@vtecx/vtecxnext'
-import { Entry } from 'typings'
+import { Entry } from '@/typings'
 import { URI_SETTINGS_PASSRESET } from '@/utils/apiconst'
 import * as apiutil from '@/utils/apiutil'
 import { PassReset } from '@/typings/apiarguments'

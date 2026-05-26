@@ -18,14 +18,13 @@
     //"jsx": "react-jsx",
     //"jsxImportSource": "react",
     "incremental": true,
-    "baseUrl": "src",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
