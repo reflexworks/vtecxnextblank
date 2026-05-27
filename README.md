@@ -8,12 +8,47 @@
 | ドキュメント | https://vte.cx/documentation.html |
 | 公式ブログ | https://blog.vte.cx/ |
 | 公式ガイド（Zenn） | https://zenn.dev/p/vtecx |
+| 管理画面 | https://admin.vte.cx/index.html |
 
 ---
 
 ## セットアップ
 
-### 1. ログイン
+### 1. ローカル開発サーバーの起動
+
+#### .env.local の作成
+
+プロジェクトルートに `.env.local` を作成し、以下の環境変数を設定する。このファイルは `.gitignore` に含まれているため、リポジトリにはコミットされない。
+
+```
+VTECX_URL=https://{サービス名}.vte.cx
+VTECX_APIKEY={管理画面でコピーしたAPIキー}
+NEXT_PUBLIC_RECAPTCHA_KEY={reCAPTCHA v2 サイトキー}
+NEXT_PUBLIC_VTECXNEXT_URL=http://localhost:3000
+```
+
+| 変数 | 取得場所 | 説明 |
+|---|---|---|
+| `VTECX_URL` | 管理画面 → サービス設定 | vte.cx サービスの URL |
+| `VTECX_APIKEY` | 管理画面 → APIキー | サーバーサイドからの API 認証キー |
+| `NEXT_PUBLIC_RECAPTCHA_KEY` | Google reCAPTCHA 管理画面 | reCAPTCHA v2 サイトキー |
+| `NEXT_PUBLIC_VTECXNEXT_URL` | — | ローカルでは `http://localhost:3000` 固定 |
+
+> `NEXT_PUBLIC_` プレフィックスが付いた変数はブラウザ側でも参照できる。付いていない変数はサーバー側（APIルート）でのみ参照可能。
+
+> `.env.local` を変更した場合は `pnpm dev` を再起動すること。
+
+#### 起動
+
+```bash
+pnpm dev
+```
+
+ブラウザで http://localhost:3000 を開く。
+
+---
+
+### 2. ログイン
 
 ```bash
 pnpm run login
@@ -32,7 +67,7 @@ password: **********                 ← パスワード
 
 ---
 
-### 2. スキーマ定義（template.xml）
+### 3. スキーマ定義（template.xml）
 
 エンティティのフィールドは `setup/_settings/template.xml` の `<content>` 内に定義する。
 
@@ -82,7 +117,7 @@ deal
 
 ---
 
-### 3. 型定義の生成
+### 4. 型定義の生成
 
 スキーマ変更のたびに以下の順で実行する。
 
@@ -96,7 +131,7 @@ pnpm download:typings     # TypeScript型定義を src/typings/index.d.ts に生
 
 ---
 
-### 4. 初期データ登録（folderacls.json）
+### 5. 初期データ登録（folderacls.json）
 
 アプリが使用するデータパスは、事前に vTecx サーバーに登録する必要がある。
 登録ファイル: `setup/_settings/folderacls.json`
@@ -137,6 +172,21 @@ pnpm upload:folderacls
 - ログインユーザー（`+`）には `CURDE` を付与し、API 経由のみに制限する
 - ロールやオーナーチェックは **API ルートではなくフレームワークが行う**。グループごとに適切な権限を folderacls で設定すること
 
+#### パス登録の注意事項
+
+**子パスを登録する場合、親パスも必ず登録する必要がある。**
+
+例: `/crm/customer` を登録する場合は `/crm` の登録も必須。
+
+```json
+[
+  { "link": [{ "___rel": "self", "___href": "/crm" }], "contributor": [ ... ] },
+  { "link": [{ "___rel": "self", "___href": "/crm/customer" }], "contributor": [ ... ] }
+]
+```
+
+動的IDを含む子パス（例: `/crm/customer/{id}/contact`）は `folderacls.json` への事前登録は不要。ただし、**親エントリ（`/crm/customer/{id}`）を API で登録する際に、子パス（`/crm/customer/{id}/contact`）も同時に登録する必要がある**。ACL は親パスを継承する。
+
 #### システムディレクトリ
 
 先頭が `_` のパス（`/_group`、`/_html` など）はシステムディレクトリで、サービス作成時にフレームワークが自動生成する。folderacls.json への定義は不要。
@@ -145,7 +195,7 @@ pnpm upload:folderacls
 
 ---
 
-### 5. メール設定（properties.xml）
+### 6. メール設定（properties.xml）
 
 `setup/_settings/properties.xml` を編集して `pnpm upload:properties` を実行することで、ユーザー登録メールとパスワードリセットメールが有効になる。
 
@@ -550,6 +600,21 @@ await vtecxnext.addGroupByAdmin([uid], '/_group/sales') // 管理者による追
 const isAdmin = await vtecxnext.isGroupMember('/_group/admin')
 const groups = await vtecxnext.getGroups()
 ```
+
+---
+
+## 管理画面（データ確認）
+
+登録したデータは vte.cx の管理画面で確認できる。
+
+- 管理画面 URL: https://admin.vte.cx/index.html
+- 対象サービスの管理画面に移動し、**エンドポイント管理**から各ディレクトリにアクセスする
+
+### 操作手順
+
+1. https://admin.vte.cx/index.html にログイン
+2. サービス一覧から対象サービスを選択
+3. 左メニューの「エンドポイント管理」をクリック
 
 ---
 
