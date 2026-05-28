@@ -355,24 +355,23 @@ ${VTECXNEXT_URL}/change-password?${PASSRESET_TOKEN}</summary>
 
 ---
 
-### entry のデータ形式
+### 戻り値の型
 
-vte.cx が返す feed の `entry` は、**件数によって型が変わる**ことに注意する。
+SDK メソッドごとに戻り値の型が異なる。`feed.entry` は SDK 内部で解決されるため、呼び出し側は意識しなくてよい。
 
-| 件数    | `entry` の型             |
-| ------- | ------------------------ |
-| 0件     | HTTP 204（`entry` なし） |
-| 1件     | オブジェクト `{}`        |
-| 2件以上 | 配列 `[]`                |
+| メソッド    | 正常時の型           | 204（データなし） |
+| ----------- | -------------------- | ----------------- |
+| `getFeed`   | `VtecxApp.Entry[]`   | `null` / `undefined` |
+| `getEntry`  | `VtecxApp.Entry`     | `null` / `undefined` |
 
-フロントエンドでは必ず配列に正規化してから使う。
+エラー時は `{ feed: { title: string } }` 型が返る。
 
 ```typescript
-const entries = Array.isArray(data?.feed?.entry)
-  ? data.feed.entry
-  : data?.feed?.entry
-    ? [data.feed.entry]
-    : []
+const entries = await vtecxnext.getFeed('/crm/customer')
+// entries は VtecxApp.Entry[]（配列）。Array.isArray による正規化は不要
+
+const entry = await vtecxnext.getEntry('/crm/customer/0000000001')
+// entry は VtecxApp.Entry（単一オブジェクト）または null（204）
 ```
 
 ---
@@ -788,11 +787,11 @@ const entry = {
 
 **意味**: エラーではなく、**対象データが存在しない**ことを示す正常レスポンス。
 
-**対処**: エラーとして扱わず、「データなし」の状態として処理する。`browserutil.requestApi` では `null` が返る。
+**対処**: エラーとして扱わず、「データなし」の状態として処理する。`getFeed` / `getEntry` では `null` または `undefined` が返る。
 
 ```typescript
-const data = await browserutil.requestApi('GET', 'crm/customers', '')
-if (data === null) {
+const entry = await vtecxnext.getEntry('/crm/customer/0000000001')
+if (entry == null) {
   // データが存在しない（204）
 }
 ```
