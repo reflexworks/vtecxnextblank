@@ -41,3 +41,6 @@ pnpm-lock.yaml
 
 .nvmrc
 .vercel
+
+# sensitive settings (use setup/_settings/properties.xml.example as template)
+setup/_settings/properties.xml
