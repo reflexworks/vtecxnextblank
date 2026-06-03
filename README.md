@@ -164,6 +164,9 @@ const entry = { userprofile: { uid, is_admin: isAdmin, is_sales: isSales } }
 #### 例
 
 ```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed>
+<entry>
 <content>customer
  name(string){255}
  address(string){500}
@@ -175,6 +178,13 @@ deal
  probability(int){100}
  scheduled_date(date)
 </content>
+<link href="/_settings/template" rel="self"></link>
+<rights></rights>
+</entry>
+<entry>
+  <link href="/_settings/template_property" rel="self"/>
+</entry>
+</feed>
 ```
 
 ---
@@ -215,6 +225,11 @@ deal
 ##### 例
 
 ```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed>
+<entry>
+<content>... (スキーマ定義)</content>
+<link href="/_settings/template" rel="self"></link>
 <rights>
 customer.status:/crm/customer
 customer.assigned_uid:/crm/customer
@@ -226,6 +241,11 @@ name;/crm/customer|/crm/deal
 password#
 score:path=admin
 </rights>
+</entry>
+<entry>
+  <link href="/_settings/template_property" rel="self"/>
+</entry>
+</feed>
 ```
 
 | 行                              | 説明                                                             |
