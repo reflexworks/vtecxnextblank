@@ -19,24 +19,21 @@ export const POST = async (req: NextRequest): Promise<Response> => {
       return result
     }
 
-    // まずログイン
-    const rxid: string = vtecxnext.getParameter('_RXID') ?? ''
-    if (!rxid) {
-      return vtecxnext.response(401, { feed: { title: 'Authentication error.' } })
-    }
-    console.log(`[api changepass] vtecxnext.loginWithRxid start. rxid=${rxid}`)
-    const statusMessage = await vtecxnext.loginWithRxid(rxid)
-    console.log(`[api changepass] statusMessage = ${JSON.stringify(statusMessage)}`)
-
-    // ログインテスト(TODO)
-    console.log(`[api changepass] uid start.`)
-    const uid = await vtecxnext.uid()
-    console.log(`[api changepass] uid=${uid}`)
-
     // リクエストJSON取得
     const data: ChangePass | undefined = await apiutil.getRequestJson(req)
     if (!data) {
       return vtecxnext.response(400, { feed: { title: 'Invalid argument.' } })
+    }
+
+    const rxid: string = vtecxnext.getParameter('_RXID') ?? ''
+    if (rxid) {
+      // メールリセットフロー: RXID でログイン
+      console.log(`[api changepass] vtecxnext.loginWithRxid start. rxid=${rxid}`)
+      const statusMessage = await vtecxnext.loginWithRxid(rxid)
+      console.log(`[api changepass] statusMessage = ${JSON.stringify(statusMessage)}`)
+    } else if (!data.oldpswd) {
+      // ログイン済みフローでは oldpswd が必須
+      return vtecxnext.response(401, { feed: { title: 'Authentication error.' } })
     }
 
     // パスワード変更
