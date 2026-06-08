@@ -1,7 +1,11 @@
-# CONTEXT.md — vte.cx 実装リファレンス
+# CONTEXT.md — vtecxnextblank 実装クイックリファレンス
 
-Claude Code などの AI ツールや開発者が vte.cx の実装パターン・制約を素早く参照するためのドキュメントです。
-詳細な仕様は [README.md](README.md) を参照してください。
+Claude Code などの AI ツールが実装時に参照する制約・パターン・クイックリファレンスです。
+
+- 詳細なフレームワーク仕様: [docs/vtecx/framework.md](docs/vtecx/framework.md)
+- SDK クイックリファレンス: [docs/vtecx/vtecxnext-api.md](docs/vtecx/vtecxnext-api.md)（よく使うメソッド＋実装例）
+- SDK 全メソッド網羅リファレンス: [docs/vtecx/api/](docs/vtecx/api/index.md)
+- セットアップ・コマンド: [README.md](README.md)
 
 ---
 
