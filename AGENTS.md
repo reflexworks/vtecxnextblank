@@ -4,10 +4,11 @@ OpenAI Codex などの AI エージェントが自動的に読み込むプロジ
 このプロジェクトで実装を行う前に、このファイルを読んでください。
 
 詳細な仕様は以下のドキュメントを参照してください。
+ドキュメントは `@vtecx/vtecxdocument` パッケージで管理されており、`pnpm update @vtecx/vtecxdocument` で更新できます。
 
-- [docs/vtecx/framework.md](docs/vtecx/framework.md) — vte.cx フレームワーク仕様（データ構造・アクセス制御・スキーマ・エラーリファレンス）
-- [docs/vtecx/vtecxnext-api.md](docs/vtecx/vtecxnext-api.md) — `@vtecx/vtecxnext` SDK のよく使うメソッドのクイックリファレンス＋実装例
-- [docs/vtecx/api/](docs/vtecx/api/index.md) — SDK 全メソッドの網羅リファレンス（カテゴリ別。必要時に参照）
+- [framework.md](node_modules/@vtecx/vtecxdocument/docs/framework.md) — vte.cx フレームワーク仕様（データ構造・アクセス制御・スキーマ・エラーリファレンス）
+- [vtecxnext-api.md](node_modules/@vtecx/vtecxdocument/docs/vtecxnext-api.md) — `@vtecx/vtecxnext` SDK のよく使うメソッドのクイックリファレンス＋実装例
+- [docs/api/](node_modules/@vtecx/vtecxdocument/docs/api/index.md) — SDK 全メソッドの網羅リファレンス（カテゴリ別。必要時に参照）
 - [CONTEXT.md](CONTEXT.md) — 制約・NG/OK パターン・クイックリファレンス
 - [README.md](README.md) — セットアップ手順・コマンドリファレンス
 
@@ -46,7 +47,7 @@ src/
   typings/
     index.d.ts     ← pnpm download:typings で自動生成（手動編集禁止）
 setup/_settings/   ← vte.cx 設定ファイル（template.xml, folderacls.json など）
-docs/vtecx/        ← vte.cx フレームワーク仕様ドキュメント
+node_modules/@vtecx/vtecxdocument/docs/  ← vte.cx フレームワーク仕様（pnpm update で更新）
 ```
 
 ---
