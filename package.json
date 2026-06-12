@@ -35,6 +35,7 @@
     "@vtecx/vtecxauth": "1.0.3",
     "@vtecx/vtecxnext": "^2.3.1",
     "@vtecx/vtecxutil": "1.5.3",
+    "@vtecx/vtecxdocument": "1.0.0",
     "browser-image-compression": "^2.0.2",
     "create-hmac": "^1.1.7",
     "csv": "^6.5.1",
