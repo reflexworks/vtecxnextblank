@@ -2,9 +2,9 @@
 
 Claude Code などの AI ツールが実装時に参照する制約・パターン・クイックリファレンスです。
 
-- 詳細なフレームワーク仕様: [docs/vtecx/framework.md](docs/vtecx/framework.md)
-- SDK クイックリファレンス: [docs/vtecx/vtecxnext-api.md](docs/vtecx/vtecxnext-api.md)（よく使うメソッド＋実装例）
-- SDK 全メソッド網羅リファレンス: [docs/vtecx/api/](docs/vtecx/api/index.md)
+- 詳細なフレームワーク仕様: [framework.md](node_modules/@vtecx/vtecxdocument/docs/framework.md)（`@vtecx/vtecxdocument`）
+- SDK クイックリファレンス: [vtecxnext-api.md](node_modules/@vtecx/vtecxdocument/docs/vtecxnext-api.md)（よく使うメソッド＋実装例）
+- SDK 全メソッド網羅リファレンス: [docs/api/](node_modules/@vtecx/vtecxdocument/docs/api/index.md)
 - セットアップ・コマンド: [README.md](README.md)
 
 ---
