@@ -43,7 +43,7 @@ module.exports = (env, argv) => {
     resolve: {
       extensions: ['.ts', '.tsx', '.js']
     },
-    target: ['web', 'es5'],
+    target: 'es2022',
     plugins: [new vtecxutil.uploaderPlugin(env.entry)]
   }
 }
