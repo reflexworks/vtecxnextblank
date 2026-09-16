@@ -27,5 +27,5 @@ minimumReleaseAgeExclude:
   - '@rspack/cli@2.2.1 || 2.2.3'
   - '@rspack/core@2.2.1 || 2.2.3'
   - jotai@3.0.0
-  - '@vtecx/vtecxdocument@1.0.4 || 1.0.5'
+  - '@vtecx/vtecxdocument@1.0.4 || 1.0.5 || 1.0.6 || 1.0.7'
   - '@vtecx/vtecxnext@3.3.1'

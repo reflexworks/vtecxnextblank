@@ -54,7 +54,7 @@
     "@types/react-dom": "19.2.7",
     "@types/sqlstring": "^2.3.2",
     "@vtecx/vtecxapi": "^2.2.6",
-    "@vtecx/vtecxdocument": "1.0.5",
+    "@vtecx/vtecxdocument": "1.0.7",
     "@vtecx/vtecxutil": "1.5.3",
     "oxlint": "^1.82.0",
     "oxlint-tsgolint": "^7.0.2001",
