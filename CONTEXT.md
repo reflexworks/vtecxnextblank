@@ -7,6 +7,7 @@ Claude Code などの AI ツールが実装時に参照する制約・パター�
 - SDK 全メソッド網羅リファレンス: [docs/api/](node_modules/@vtecx/vtecxdocument/docs/api/index.md)
 - セットアップ・コマンド: [README.md](README.md)
 - バッチジョブリファレンス: [batchjob.md](node_modules/@vtecx/vtecxdocument/docs/batchjob.md)
+- 設定ファイルの反映ルール: [settings-deployment.md](node_modules/@vtecx/vtecxdocument/docs/settings-deployment.md)
 
 ---
 
